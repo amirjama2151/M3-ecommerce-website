@@ -776,4 +776,9 @@ main > section, #contact-us {
     width: 120px;
     height: 120px;
   }
+}
+
+#categories .highlight {
+  color: #c6ff6b;
+  font-weight: 700;
 } 
