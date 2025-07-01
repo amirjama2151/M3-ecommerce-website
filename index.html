@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ClickCart</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a href="#home" class="visually-hidden" tabindex="0">Skip to main content</a>
+  <nav role="navigation" aria-label="Main Navigation">
+    <ul class="navbar">
+      <li><a href="#home" aria-current="page">Home</a></li>
+      <li><a href="#categories">Categories</a></li>
+      <li><a href="#deals">Deals</a></li>
+      <li><a href="#top-seller">Top Seller</a></li>
+      <li><a href="#featured">Featured</a></li>
+      <li><a href="#contact-us">Contact Us</a></li>
+    </ul>
+  </nav>
+  <main id="home" aria-labelledby="home-heading" role="main">
+    <section class="hero" aria-label="Hero section">
+      <div class="hero-text">
+        <h1 id="home-heading">Discover<br>Click<br>Delivered</h1>
+        <p>Because You Deserve Better</p>
+        <div class="hero-actions">
+          <button class="btn primary" aria-label="Buy Now">Buy Now</button>
+          <button class="btn secondary" aria-label="Shop All">Shop All</button>
+        </div>
+        <div class="social-icons" aria-label="Social Media Links">
+          <a href="#" aria-label="Instagram" tabindex="0"><img src="icons/instagram.png" alt="Instagram logo" /></a>
+          <a href="#" aria-label="TikTok" tabindex="0"><img src="icons/tiktok.png" alt="TikTok logo" /></a>
+          <a href="#" aria-label="Facebook" tabindex="0"><img src="icons/facebook.png" alt="Facebook logo" /></a>
+          <a href="#" aria-label="YouTube" tabindex="0"><img src="icons/youtube.png" alt="YouTube logo" /></a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="images/headphones.png" alt="Blue wireless headphones product" />
+      </div>
+    </section>
+    <section id="categories" aria-labelledby="categories-heading" role="region" aria-label="Shop by Category">
+      <h2 id="categories-heading">Shop by <span class="highlight">Category</span></h2>
+      <div id="category-cards" class="category-cards" aria-live="polite"></div>
+      <div class="shop-all">
+        <button class="btn secondary" aria-label="Shop All Categories">Shop Now</button>
+      </div>
+    </section>
+    <section id="deals" aria-labelledby="deals-heading" role="region" aria-label="Today's Deals">
+      <h2 id="deals-heading"><span class="highlight">TODAY'S</span> DEALS</h2>
+      <div id="deal-cards" class="deal-cards" aria-live="polite"></div>
+    </section>
+    <section id="top-seller" aria-labelledby="top-seller-heading" role="region" aria-label="Top Seller">
+      <h2 id="top-seller-heading"><span class="highlight">TOP</span> SELLER</h2>
+      <div id="top-seller-cards" class="deal-cards" aria-live="polite"></div>
+    </section>
+    <section id="featured" aria-labelledby="featured-heading" role="region" aria-label="Featured Products">
+      <h2 id="featured-heading">Featured <span class="highlight">Products</span></h2>
+      <div id="featured-grid" class="featured-grid" aria-live="polite"></div>
+    </section>
+    <section id="contact-us" aria-labelledby="contact-us-heading" role="region" aria-label="Shop with Confidence">
+      <h2 id="contact-us-heading">SHOP WITH <span class="highlight">CONFIDENCE</span></h2>
+      <div class="confidence-cards">
+        <div class="confidence-card">
+          <img src="icons/shipping.png" alt="Free Shipping Icon" role="img" aria-label="Free Shipping" />
+          <h3>Free Shipping</h3>
+          <p>A FREE shipping is available for orders more than $99.</p>
+        </div>
+        <div class="confidence-card">
+          <img src="icons/support.png" alt="24/7 Support Icon" role="img" aria-label="24/7 Support" />
+          <h3>24/7 Support</h3>
+          <p>We offer 24/7 technical support to our customers.</p>
+        </div>
+        <div class="confidence-card">
+          <img src="icons/returns.png" alt="Returns and Exchanges Icon" role="img" aria-label="Returns and Exchanges" />
+          <h3>Returns and Exchanges</h3>
+          <p>Any product that was bought in our online store, can be returned during 30 days since the purchase date.</p>
+        </div>
+      </div>
+      <div class="newsletter">
+        <p>
+          JOIN OUR <span class="highlight">NEWSLETTER</span> AND GET<br />
+          <span class="highlight">$10 DISCOUNT</span> ON YOUR NEXT <span class="highlight">ORDER</span>
+        </p>
+        <form class="subscribe-form" aria-label="Newsletter Subscription" autocomplete="off">
+          <label for="newsletter-email" class="visually-hidden">Email Address</label>
+          <input id="newsletter-email" type="email" placeholder="Enter Your Email" aria-label="Email Address" required />
+          <button class="btn-subscribe" type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="social-follow" aria-label="Follow us on social media">
+        <p>FOLLOW US</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Instagram" tabindex="0"><img src="icons/instagram.png" alt="Instagram logo" /></a>
+          <a href="#" aria-label="TikTok" tabindex="0"><img src="icons/tiktok.png" alt="TikTok logo" /></a>
+          <a href="#" aria-label="Facebook" tabindex="0"><img src="icons/facebook.png" alt="Facebook logo" /></a>
+          <a href="#" aria-label="YouTube" tabindex="0"><img src="icons/youtube.png" alt="YouTube logo" /></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="product-modal" class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modal-product-name" tabindex="-1" style="display:none;">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close product details">&times;</button>
+      <img id="modal-product-img" src="" alt="Product image" />
+      <h2 id="modal-product-name"></h2>
+      <p id="modal-product-price"></p>
+      <form id="modal-purchase-form" autocomplete="off">
+        <label for="modal-quantity">Quantity:</label>
+        <input type="number" id="modal-quantity" name="quantity" min="1" value="1" aria-label="Quantity" required />
+        <button type="submit" class="btn primary" aria-label="Purchase">Purchase</button>
+      </form>
+    </div>
+  </div>
+  <style>.visually-hidden { position: absolute !important; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); white-space: nowrap; }</style>
+  <script src="script.js"></script>
+</body>
+</html> 
