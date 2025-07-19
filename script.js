@@ -49,7 +49,7 @@ function renderDeals() {
     let fullStars = Math.floor(deal.stars);
     let halfStar = deal.stars % 1 >= 0.5;
     for (let i = 0; i < fullStars; i++) starsHTML += '★';
-    if (halfStar) starsHTML += '<span aria-hidden="true" style="color:#BD8A00;">⯨</span>';
+    if (halfStar) starsHTML += '<span aria-hidden="true" style="color:#946C00;">⯨</span>';
     for (let i = fullStars + (halfStar ? 1 : 0); i < 5; i++) starsHTML += '☆';
     card.innerHTML = `
       <img src="${deal.img}" alt="${deal.alt}">
