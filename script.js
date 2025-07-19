@@ -1,4 +1,6 @@
 // Dynamic data for categories, deals, top sellers, and featured products
+console.log('ClickCart script loading...');
+
 const categories = [
   { img: 'images/smartphone.png', alt: 'Category Smart Phones', label: 'SMART PHONES' },
   { img: 'images/headphones2.png', alt: 'Category Accessories', label: 'ACCESSORIES' },
@@ -53,12 +55,15 @@ function validateProductData(product, context) {
     if (!product || typeof product !== 'object') {
       throw new Error('Invalid product data: product is null or not an object');
     }
-    if (!product.name || typeof product.name !== 'string') {
-      throw new Error('Invalid product data: missing or invalid name');
-    }
     if (!product.img || typeof product.img !== 'string') {
       throw new Error('Invalid product data: missing or invalid image path');
     }
+    
+    // Check for either 'name' (products) or 'label' (categories)
+    if (!product.name && !product.label) {
+      throw new Error('Invalid product data: missing name or label');
+    }
+    
     return true;
   } catch (error) {
     logError(error, context);
@@ -68,13 +73,20 @@ function validateProductData(product, context) {
 
 function renderCategories() {
   try {
+    console.log('renderCategories called');
     const container = getElementSafely('#category-cards', 'renderCategories');
-    if (!container) return;
+    if (!container) {
+      console.error('Category container not found');
+      return;
+    }
     
+    console.log('Category container found, rendering categories:', categories.length);
     container.innerHTML = '';
     categories.forEach((cat, index) => {
       try {
+        console.log(`Rendering category ${index}:`, cat);
         if (!validateProductData(cat, `renderCategories - category ${index}`)) {
+          console.error(`Category ${index} failed validation:`, cat);
           return;
         }
         
@@ -83,10 +95,12 @@ function renderCategories() {
         card.tabIndex = 0;
         card.innerHTML = `<img src="${cat.img}" alt="${cat.alt || cat.label}"><h3>${cat.label}</h3>`;
         container.appendChild(card);
+        console.log(`Category ${index} rendered successfully`);
       } catch (error) {
         logError(error, `renderCategories - category ${index}`);
       }
     });
+    console.log('All categories rendered');
   } catch (error) {
     logError(error, 'renderCategories');
   }
@@ -498,6 +512,7 @@ function initializeHomeButtons() {
 // Initialize everything when DOM is ready
 function initializeApp() {
   try {
+    console.log('Initializing ClickCart app...');
     renderCategories();
     renderDeals();
     renderTopSellers();
@@ -506,6 +521,7 @@ function initializeApp() {
     enableNavHighlight();
     enableNewsletterForm();
     initializeHomeButtons();
+    console.log('ClickCart app initialized successfully');
   } catch (error) {
     logError(error, 'initializeApp');
   }
