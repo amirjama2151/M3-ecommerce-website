@@ -3,11 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ClickCart</title>
+  <title>ClickCart - Online Electronics Store</title>
+  <meta name="description" content="ClickCart is your one-stop online shop for electronics, headphones, smartwatches, and more. Discover deals, top sellers, and shop with confidence!" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <a href="#home" class="visually-hidden" tabindex="0">Skip to main content</a>
+  <header class="site-header">
+    <a href="#home" class="logo-link" aria-label="ClickCart Home">
+      <img src="icons/ClickCartLogo.png" alt="ClickCart Logo" class="site-logo" />
+    </a>
+  </header>
   <nav role="navigation" aria-label="Main Navigation">
     <ul class="navbar">
       <li><a href="#home" aria-current="page">Home</a></li>
@@ -21,7 +26,7 @@
   <main id="home" aria-labelledby="home-heading" role="main">
     <section class="hero" aria-label="Hero section">
       <div class="hero-text">
-        <h1 id="home-heading">Discover<br>Click<br>Delivered</h1>
+        <h1 id="home-heading">Discover<br>Click<br>Delivered<br>ClickCart</h1>
         <p>Because You Deserve Better</p>
         <div class="hero-actions">
           <button class="btn primary" aria-label="Buy Now">Buy Now</button>
@@ -35,7 +40,7 @@
         </div>
       </div>
       <div class="hero-image">
-        <img src="images/headphones.png" alt="Blue wireless headphones product" />
+        <img src="images/headphones.png" alt="Blue wireless headphones product at ClickCart" />
       </div>
     </section>
     <section id="categories" aria-labelledby="categories-heading" role="region" aria-label="Shop by Category">
@@ -46,32 +51,32 @@
       </div>
     </section>
     <section id="deals" aria-labelledby="deals-heading" role="region" aria-label="Today's Deals">
-      <h2 id="deals-heading"><span class="highlight">TODAY'S</span> DEALS</h2>
+      <h2 id="deals-heading">TODAY'S <span class="highlight">ELECTRONICS</span> DEALS</h2>
       <div id="deal-cards" class="deal-cards" aria-live="polite"></div>
     </section>
     <section id="top-seller" aria-labelledby="top-seller-heading" role="region" aria-label="Top Seller">
-      <h2 id="top-seller-heading"><span class="highlight">TOP</span> SELLER</h2>
+      <h2 id="top-seller-heading">TOP <span class="highlight">SELLER</span> GADGETS</h2>
       <div id="top-seller-cards" class="deal-cards" aria-live="polite"></div>
     </section>
     <section id="featured" aria-labelledby="featured-heading" role="region" aria-label="Featured Products">
-      <h2 id="featured-heading">Featured <span class="highlight">Products</span></h2>
+      <h2 id="featured-heading">FEATURED ELECTRONICS <span class="highlight">Products</span></h2>
       <div id="featured-grid" class="featured-grid" aria-live="polite"></div>
     </section>
     <section id="contact-us" aria-labelledby="contact-us-heading" role="region" aria-label="Shop with Confidence">
       <h2 id="contact-us-heading">SHOP WITH <span class="highlight">CONFIDENCE</span></h2>
       <div class="confidence-cards">
         <div class="confidence-card">
-          <img src="icons/shipping.png" alt="Free Shipping Icon" role="img" aria-label="Free Shipping" />
+          <img src="icons/shipping.png" alt="Free Shipping Icon for ClickCart Electronics" role="img" aria-label="Free Shipping" />
           <h3>Free Shipping</h3>
           <p>A FREE shipping is available for orders more than $99.</p>
         </div>
         <div class="confidence-card">
-          <img src="icons/support.png" alt="24/7 Support Icon" role="img" aria-label="24/7 Support" />
+          <img src="icons/support.png" alt="24/7 Support Icon for ClickCart Electronics" role="img" aria-label="24/7 Support" />
           <h3>24/7 Support</h3>
           <p>We offer 24/7 technical support to our customers.</p>
         </div>
         <div class="confidence-card">
-          <img src="icons/returns.png" alt="Returns and Exchanges Icon" role="img" aria-label="Returns and Exchanges" />
+          <img src="icons/returns.png" alt="Returns and Exchanges Icon for ClickCart Electronics" role="img" aria-label="Returns and Exchanges" />
           <h3>Returns and Exchanges</h3>
           <p>Any product that was bought in our online store, can be returned during 30 days since the purchase date.</p>
         </div>
@@ -81,9 +86,10 @@
           JOIN OUR <span class="highlight">NEWSLETTER</span> AND GET<br />
           <span class="highlight">$10 DISCOUNT</span> ON YOUR NEXT <span class="highlight">ORDER</span>
         </p>
-        <form class="subscribe-form" aria-label="Newsletter Subscription" autocomplete="off">
+        <form class="subscribe-form" aria-label="Newsletter Subscription" autocomplete="off" onsubmit="return validateNewsletterForm(event)">
           <label for="newsletter-email" class="visually-hidden">Email Address</label>
           <input id="newsletter-email" type="email" placeholder="Enter Your Email" aria-label="Email Address" required />
+          <span id="newsletter-error" class="form-error" aria-live="polite" style="display:none;color:#d32f2f;font-size:1rem;"></span>
           <button class="btn-subscribe" type="submit">Subscribe</button>
         </form>
       </div>
@@ -113,5 +119,26 @@
   </div>
   <style>.visually-hidden { position: absolute !important; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); white-space: nowrap; }</style>
   <script src="script.js"></script>
+  <script>
+function validateNewsletterForm(event) {
+  const emailInput = document.getElementById('newsletter-email');
+  const errorSpan = document.getElementById('newsletter-error');
+  const email = emailInput.value.trim();
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email)) {
+    errorSpan.textContent = 'Please enter a valid email address.';
+    errorSpan.style.display = 'block';
+    emailInput.setAttribute('aria-invalid', 'true');
+    emailInput.focus();
+    event.preventDefault();
+    return false;
+  } else {
+    errorSpan.textContent = '';
+    errorSpan.style.display = 'none';
+    emailInput.setAttribute('aria-invalid', 'false');
+    return true;
+  }
+}
+</script>
 </body>
 </html> 
