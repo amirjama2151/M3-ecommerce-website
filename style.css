@@ -69,6 +69,14 @@ nav {
   font-weight: 800;
   margin-bottom: 1rem;
   color: #111;
+  text-align: left;
+}
+.hero-text h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  color: #111;
+  text-align: left;
 }
 .hero-text p { font-size: 1.2rem; margin-bottom: 1.5rem; }
 .hero-actions { margin-bottom: 1.5rem; }
@@ -275,8 +283,8 @@ nav {
   color: #222;
 }
 .stars {
-  color: #BD8A00;
-  font-size: 1.2rem;
+  color: #946C00;
+  font-size: 1.4rem;
   margin-right: 0.3rem;
 }
 .reviews {
