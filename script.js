@@ -432,13 +432,74 @@ if (modalForm) {
       }
       
       const name = currentModalProduct ? currentModalProduct.name : (modalName ? modalName.textContent : 'Product');
-      alert(`Thank you for purchasing ${qty} x ${name}!`);
+      // Use a custom modal instead of alert to control the branding
+      showPurchaseConfirmation(qty, name);
       closeProductModal();
     } catch (error) {
       logError(error, 'modal form submit');
       alert('There was an error processing your purchase. Please try again.');
     }
   });
+}
+
+// Custom purchase confirmation function
+function showPurchaseConfirmation(quantity, productName) {
+  try {
+    // Create a custom modal for purchase confirmation
+    const confirmationModal = document.createElement('div');
+    confirmationModal.className = 'purchase-confirmation-modal';
+    confirmationModal.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10001;
+    `;
+    
+    const confirmationContent = document.createElement('div');
+    confirmationContent.style.cssText = `
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      text-align: center;
+      max-width: 400px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    `;
+    
+    confirmationContent.innerHTML = `
+      <div style="margin-bottom: 1rem; color: #666; font-size: 0.9rem;">ClickCart says</div>
+      <div style="margin-bottom: 1.5rem; font-size: 1.1rem; color: #333;">Thank you for purchasing ${quantity} x ${productName}!</div>
+      <button onclick="this.closest('.purchase-confirmation-modal').remove()" style="
+        background: #0052cc;
+        color: white;
+        border: none;
+        padding: 0.75rem 2rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        font-size: 1rem;
+      ">OK</button>
+    `;
+    
+    confirmationModal.appendChild(confirmationContent);
+    document.body.appendChild(confirmationModal);
+    
+    // Auto-remove after 5 seconds
+    setTimeout(() => {
+      if (confirmationModal.parentNode) {
+        confirmationModal.remove();
+      }
+    }, 5000);
+    
+  } catch (error) {
+    logError(error, 'showPurchaseConfirmation');
+    // Fallback to regular alert if custom modal fails
+    alert(`Thank you for purchasing ${quantity} x ${productName}!`);
+  }
 }
 
 if (productModal) {
