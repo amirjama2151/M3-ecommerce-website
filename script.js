@@ -476,6 +476,7 @@ function initializeHomeButtons() {
   try {
     const homeShopAllBtn = document.querySelector('.hero-actions .btn.secondary');
     const homeShopNowBtn = document.querySelector('.hero-actions .btn.primary');
+    const categoriesShopNowBtn = document.querySelector('.shop-all .btn.secondary');
     
     if (homeShopAllBtn) {
       homeShopAllBtn.addEventListener('click', function(e) {
@@ -501,6 +502,20 @@ function initializeHomeButtons() {
           }
         } catch (error) {
           logError(error, 'homeShopNowBtn click');
+        }
+      });
+    }
+    
+    if (categoriesShopNowBtn) {
+      categoriesShopNowBtn.addEventListener('click', function(e) {
+        try {
+          e.preventDefault();
+          const dealsSection = document.getElementById('deals');
+          if (dealsSection) {
+            dealsSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        } catch (error) {
+          logError(error, 'categoriesShopNowBtn click');
         }
       });
     }
