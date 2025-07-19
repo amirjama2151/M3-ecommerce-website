@@ -275,7 +275,7 @@ nav {
   color: #222;
 }
 .stars {
-  color: #ffb300;
+  color: #BD8A00;
   font-size: 1.2rem;
   margin-right: 0.3rem;
 }
@@ -470,6 +470,30 @@ nav {
   margin-bottom: 1.5rem;
   letter-spacing: 0.01em;
 }
+.social-follow h1 {
+  color: #c6ff6b;
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+.social-follow h3 {
+  color: #c6ff6b;
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+@media (max-width: 900px) {
+  .social-follow h1 {
+    font-size: 1.3rem;
+  }
+  .social-follow h3 {
+    font-size: 1.3rem;
+  }
+}
 .social-icons {
   display: flex;
   gap: 3rem;
@@ -589,7 +613,7 @@ nav {
 }
 .product-card p {
   font-size: 1.125rem;
-  color: #00b248;
+  color: #205A07;
   margin-bottom: 1rem;
 }
 .product-card .btn {

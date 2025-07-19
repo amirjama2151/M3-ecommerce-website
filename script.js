@@ -1,30 +1,30 @@
 // Dynamic data for categories, deals, top sellers, and featured products
 const categories = [
-  { img: 'images/smartphone.png', alt: 'Smart Phones', label: 'SMART PHONES' },
-  { img: 'images/headphones2.png', alt: 'Accessories', label: 'ACCESSORIES' },
-  { img: 'images/appliances.png', alt: 'Smart Appliances', label: 'SMART APPLIANCES' },
-  { img: 'images/smartwatch1.png', alt: 'Smart Watches', label: 'SMART WATCHES' },
-  { img: 'images/drone.png', alt: 'Miscellaneous Items', label: 'MISCELLANEOUS ITEMS' },
+  { img: 'images/smartphone.png', alt: 'Category Smart Phones', label: 'SMART PHONES' },
+  { img: 'images/headphones2.png', alt: 'Category Accessories', label: 'ACCESSORIES' },
+  { img: 'images/appliances.png', alt: 'Category Smart Appliances', label: 'SMART APPLIANCES' },
+  { img: 'images/smartwatch1.png', alt: 'Category Smart Watches', label: 'SMART WATCHES' },
+  { img: 'images/drone.png', alt: 'Category Miscellaneous Items', label: 'MISCELLANEOUS ITEMS' },
 ];
 const deals = [
-  { img: 'images/headphones2.png', alt: 'Blue Headphone', name: 'Headphone', stars: 4.5, reviews: 45, old: 45, price: 35, discount: 22 },
-  { img: 'images/smartwatch2.png', alt: 'Blue Smart Watch', name: 'Smart Watch', stars: 4.5, reviews: 24, old: 149, price: 99, discount: 34 },
-  { img: 'images/neckband.png', alt: 'Red Neckband', name: 'Neckband', stars: 4.5, reviews: 67, old: 35, price: 25, discount: 29 },
+  { img: 'images/headphones2.png', alt: 'DealBlue Headphone', name: 'Headphone', stars: 4.5, reviews: 45, old: 45, price: 35, discount: 22 },
+  { img: 'images/smartwatch2.png', alt: 'DealBBlue Smart Watch', name: 'Smart Watch', stars: 4.5, reviews: 24, old: 149, price: 99, discount: 34 },
+  { img: 'images/neckband.png', alt: 'DealB Red Neckband', name: 'Neckband', stars: 4.5, reviews: 67, old: 35, price: 25, discount: 29 },
 ];
 const topSellers = [
-  { img: 'images/headphones2.png', alt: 'Headphone', name: 'Headphone', stars: 5, reviews: 45, old: 45, price: 35, discount: 22 },
-  { img: 'images/smartwatch2.png', alt: 'Smart Watch', name: 'Smart Watch', stars: 4, reviews: 24, old: 149, price: 99, discount: 34 },
-  { img: 'images/neckband.png', alt: 'Neckband', name: 'Neckband', stars: 4, reviews: 67, old: 35, price: 25, discount: 29 },
+  { img: 'images/headphones2.png', alt: 'Top Seller Headphone', name: 'Headphone', stars: 5, reviews: 45, old: 45, price: 35, discount: 22 },
+  { img: 'images/smartwatch2.png', alt: 'Top Seller Smart Watch', name: 'Smart Watch', stars: 4, reviews: 24, old: 149, price: 99, discount: 34 },
+  { img: 'images/neckband.png', alt: 'Top Seller Neckband', name: 'Neckband', stars: 4, reviews: 67, old: 35, price: 25, discount: 29 },
 ];
 const featured = [
-  { img: 'images/headphone4.jpg', alt: 'Wireless Headphones', name: 'Wireless Headphones', price: 99.99 },
-  { img: 'images/smartwatch4.jpg', alt: 'Smartwatch', name: 'Smartwatch', price: 149.99 },
-  { img: 'images/neckband4.jpg', alt: 'Neckband Earphones', name: 'Neckband Earphones', price: 59.99 },
-  { img: 'images/earbuds4.jpg', alt: 'Bluetooth Earbuds', name: 'Bluetooth Earbuds', price: 89.99 },
-  { img: 'images/gamingheadset4.jpg', alt: 'Gaming Headset', name: 'Gaming Headset', price: 129.99 },
-  { img: 'images/airpods4.jpg', alt: 'AirPods Pro', name: 'AirPods Pro', price: 199.99 },
-  { img: 'images/noisecancelling4.jpg', alt: 'Noise Cancelling Headphones', name: 'Noise Cancelling Headphones', price: 179.99 },
-  { img: 'images/speaker4.jpg', alt: 'Bluetooth Speaker', name: 'Bluetooth Speaker', price: 39.99 }
+  { img: 'images/headphone4.jpg', alt: 'Featured Wireless Headphones', name: 'Wireless Headphones', price: 99.99 },
+  { img: 'images/smartwatch4.jpg', alt: 'Featured Smartwatch', name: 'Smartwatch', price: 149.99 },
+  { img: 'images/neckband4.jpg', alt: 'Featured Neckband Earphones', name: 'Neckband Earphones', price: 59.99 },
+  { img: 'images/earbuds4.jpg', alt: 'Featured Bluetooth Earbuds', name: 'Bluetooth Earbuds', price: 89.99 },
+  { img: 'images/gamingheadset4.jpg', alt: 'Featured Gaming Headset', name: 'Gaming Headset', price: 129.99 },
+  { img: 'images/airpods4.jpg', alt: 'Featured AirPods Pro', name: 'AirPods Pro', price: 199.99 },
+  { img: 'images/noisecancelling4.jpg', alt: 'Featured Noise Cancelling Headphones', name: 'Noise Cancelling Headphones', price: 179.99 },
+  { img: 'images/speaker4.jpg', alt: 'Featured Bluetooth Speaker', name: 'Bluetooth Speaker', price: 39.99 }
 ];
 
 function renderCategories() {
@@ -34,7 +34,7 @@ function renderCategories() {
     const card = document.createElement('div');
     card.className = 'category-card';
     card.tabIndex = 0;
-    card.innerHTML = `<img src="${cat.img}" alt="${cat.alt}"><p>${cat.label}</p>`;
+    card.innerHTML = `<img src="${cat.img}" alt="${cat.alt}"><h3>${cat.label}</h3>`;
     container.appendChild(card);
   });
 }
@@ -49,7 +49,7 @@ function renderDeals() {
     let fullStars = Math.floor(deal.stars);
     let halfStar = deal.stars % 1 >= 0.5;
     for (let i = 0; i < fullStars; i++) starsHTML += '★';
-    if (halfStar) starsHTML += '<span aria-hidden="true" style="color:#ffb300;">⯨</span>';
+    if (halfStar) starsHTML += '<span aria-hidden="true" style="color:#BD8A00;">⯨</span>';
     for (let i = fullStars + (halfStar ? 1 : 0); i < 5; i++) starsHTML += '☆';
     card.innerHTML = `
       <img src="${deal.img}" alt="${deal.alt}">
